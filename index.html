@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decision</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sortie">
+    <form id="form">
+        <label>Montant en poche :</label>
+        <input type="number" id="montant" placeholder="montant en $" min="0">
+
+        <label>Prix de l'objet :</label>
+        <input type="number" id="prix" placeholder="prix en $" min="0">
+
+        <button type="submit" id="action">Decision</button>
+    </form>
+</div>
+
+<p class="vide"> </p>
+
+<script>
+    let form = document.getElementById("form");
+    let vide = document.querySelector(".vide");
+
+    form.addEventListener("submit", function(event){
+        event.preventDefault(); // empêche le rechargement
+
+        let montant = Number(document.getElementById("montant").value);
+        let prix = Number(document.getElementById("prix").value);
+
+        if(prix === 0){
+            vide.innerHTML = " Objet gratuit !";
+            vide.style.color = "orange";
+        }
+        else if(montant >= prix){
+            vide.innerHTML = "Montant suffisant, vous pouvez sortir !";
+            vide.style.color = "green";
+        }
+        else{
+            vide.innerHTML = "Montant insuffisant, vous ne pouvez pas sortir !";
+            vide.style.color = "red";
+        }
+    });
+</script>
+
+</body>
+</html>
